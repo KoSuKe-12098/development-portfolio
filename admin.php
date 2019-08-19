@@ -1,0 +1,145 @@
+<?php
+session_start();
+    require_once "classes/classItems.php";
+    include "color.php";
+
+    $items = new items;
+    $color1 = new ColorInterpreter;
+    $result = $items->getCategory();
+    $result2 = $items->getContact();
+    $result4 = $items->getItemInfo();
+
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="container-fluid">
+    <h1 class="text-center">ADMIN PAGE</h1><a href="logout.php">Logout</a><br><br>
+    <a href="seeAllItems.php">ALL ITEMS</A>
+    <div class="row">
+        <div class="col-6">
+             <div class="card">
+                <!-- アイテムを追加するときのフォーム -->
+                <h2>Add Items</h2>
+                <form action="AdminAction.php" method="post" enctype="multipart/form-data"　class="txet-center">
+                Item Name
+                    <input type="text" name="name" placeholder="Item Name"><br><br>
+                Item Price
+                    <input type="number" name="price" placeholder="Item Price"><br><br>
+                Item Stock
+                    <input type="number" name="stock" placeholder="Item Stock"><br><br>
+                Item Color
+                    <input type="color" name="color" placeholder="Item Color"><br><br>
+                Item Size
+                    <select name="size">
+                    <?php  
+                        foreach($result as $row){
+                                    $catid = $row["catid"];
+                                    echo "<option value='".$row["size"]."'>".$row["size"]."</option>";
+                                }
+                    ?>
+                    </select><br><br>
+                Item Comment
+                    <input type="text" name="com" placeholder="Item Comment"><br><br>
+                Serial Number
+                    <input type="text" name="serialnum" placeholder="Serial Number"><br><br>
+                Item Image
+                    <input type="file" name="image"><br><br>
+                Item Category
+                    <select name="catname">
+                    <?php  
+                        foreach($result as $row){
+                                    $catid = $row["catid"];
+                                    echo "<option value='".$catid."'>".$row["catname"]."</option>";
+                                }
+                    ?>
+                    </select><br><br>
+                    <input type="hidden" name="catid" value="<?php echo $catid?>">
+                    <input type="submit" name="add" value="Add" class="btn-danger"><br><br>
+                </form>
+            </div>
+        </div>
+        <div class="col-6">
+             <div class="card">
+                 <!-- カテゴリを追加 -->
+                 <h2>Add Category</h2>
+                <form action="AdminAction.php" method="post">
+                    <input type="text" name="catname" placeholder="Category Name">
+                    <input type="submit" name="addcat" value="Add Category" class="btn-success">
+                </form><br>
+                <!-- カテゴリの変更 -->
+                <h2>Update Category</h2>
+                    <table>
+                    <tr class="bg-primary text-white">
+                        <th>Category Name</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <?php  
+
+                        foreach($result as $row){
+                            
+                            $catid = $row["catid"];
+                            echo "<tr>";
+                            echo "<td>".$row["catname"]."</td><br>";
+                            echo "<td><a href='updateCategory.php?id=$catid'>>>Update</a></td>";
+                            echo "<td><a href='AdminAction.php?actiontype=deletecat&id=$catid'>>>Delete</a></td><br>";
+                            echo "</tr>";
+                        }
+        
+                    ?>
+                    </table><br>
+            </div>
+        </div>    
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+            <!-- 客からのコメントを表示する機能 -->
+            <form action="AdminAction.php" method="post">
+                <select name="comment">
+                   <?php 
+                    
+                    foreach($result2 as $row){
+                        echo "<option value='".$row["formid"]."'>".$row["name"]."</option>";
+                    }
+                  ?>
+                </select>
+                <input type='submit' name='showcomment' value='Show Comment'>   
+                    
+                
+                    </form>
+                    <?php if(isset($_SESSION["searchID"]) && !empty($_SESSION["searchID"])){
+
+                            $id = $_SESSION["searchID"];
+                            $result3 = $items->specificSearchComment($id);
+
+                            
+        
+                                echo "Name  ".$result3["name"]."<br><br>";
+                                echo "Email  ".$result3["email"]."<br><br>";
+                                echo "Subject  ".$result3["subject"]."<br><br>";
+                                echo "Comment  ".$result3["comment"]."<br><br>";
+                      
+                    }
+                             
+                ?>
+            </div>
+        </div>
+       
+    </div>
+   
+        </div>
+    </div>
+</div>
+</body>
+</html>
