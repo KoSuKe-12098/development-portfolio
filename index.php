@@ -1,9 +1,10 @@
 <?php
 		require_once "classes/classItems.php";
-		session_start();
+		include "classes/classUser.php";
 		$items = new items;
 
 		$result = $items->getItemInfo();
+		$result3 = $items->getCartQuantity($loginid);
 
 ?>
 
@@ -39,6 +40,7 @@
 					<li><a href="index.php">home</a></li>
 					<li><a href="categories.php">items</a></li>
 					<li><a href="contact.php">contact</a></li>
+					<li><a href="user.php">my page</a></li>
 					<li><a href="logout.php">logout</a></li>
 				</ul>
 			</nav>
@@ -56,7 +58,7 @@
 							<img src="images/shopping-bag.svg" alt="">
 							<div class="cart_num_container">
 								<div class="cart_num_inner">
-									<div class="cart_num">4</div>
+									<div class="cart_num"><?php echo $result3 ?></div>
 								</div>
 							</div>
 						</div>
@@ -81,8 +83,9 @@
 		<nav class="menu_nav">
 			<ul class="menu_mm">
 				<li class="menu_mm"><a href="index.php">home</a></li>
-				<li class="menu_mm"><a href="categoryies.php">items</a></li>
+				<li class="menu_mm"><a href="categories.php">items</a></li>
 				<li class="menu_mm"><a href="cantact.php">contact</a></li>
+				<li class="menu_mm"><a href="user.php">my page</a></li>
 				<li class="menu_mm"><a href="logout.php">logout</a></li>
 			</ul>
 		</nav>
@@ -311,22 +314,23 @@
 	</div>
 
 
-	<!-- Footer -->
+<!-- Footer -->
 
-	<footer class="footer">
+<footer class="footer bg-dark" style="margin-top: 70px;">
 		<div class="container">
 			<div class="row">
 				<div class="col text-center">
-					<div class="footer_logo"><a href="index.php">NEIGHBOR HOOD</a></div>
+					<div class="footer_logo"><a href="index.php" class="text-white" style="font-size:40px;">NEIGHBOR HOOD</a></div>
 					<nav class="footer_nav">
 						<ul>
-							<li><a href="index.php">home</a></li>
-							<li><a href="categories.php">items</a></li>
-							<li><a href="contact.php">contact</a></li>
-							<li><a href="logout.php">logout</a></li>
+							<li><a href="index.php" class="text-white">home</a></li>
+							<li><a href="categories.php" class="text-white">items</a></li>
+                            <li><a href="contact.php" class="text-white">contact</a></li>
+							<li><a href="user.php" class="text-white">my page</a></li>
+                            <li><a href="logout.php" class="text-white">logout</a></li>
 						</ul>
 					</nav>
-					<div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					<div class="copyright text-white"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 Copyright &copy;<script>document.write(new Date().getFullYear());</script>NEIGHBOR　HOOD CO. LTD, ALL RIGHTS RESERVED <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
 				</div>
 			</div>

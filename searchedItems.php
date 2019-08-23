@@ -1,12 +1,13 @@
 <?php
 
     require_once "classes/classItems.php";
-
+	$loginid = $_SESSION["loginid"];
     $items = new items;
 
     $id = $_GET["id"];
 
-    $result = $items->specificSearch($id);
+	$result = $items->specificSearch($id);
+	$result2 = $items->getCartQuantity($loginid);
 
 
 
@@ -32,7 +33,7 @@
 <link rel="stylesheet" type="text/css" href="styles/categories.css">
 <link rel="stylesheet" type="text/css" href="styles/categories_responsive.css">
 </head>
-<body>
+<body style="margin-top: 25px;">
 
 <div class="super_container">
 	
@@ -46,15 +47,16 @@
 					<li><a href="index.php">home</a></li>
 					<li><a href="categories.php">items</a></li>
 					<li><a href="contact.php">contact</a></li>
+					<li><a href="user.php">my page</a></li>
 					<li><a href="logout.php">logout</a></li>
 				</ul>
 			</nav>
 			<div class="header_content ml-auto">
 				<div class="search header_search">
-					<form action="UserAction.php">
+					<!-- <form action="UserAction.php">
 						<input type="search" class="search_input" required="required">
 						<button type="submit" id="search_button" class="search_button"><img src="images/magnifying-glass.svg" alt=""></button>
-					</form>
+					</form> -->
 				</div>
 				<div class="shopping">
 					<!-- Cart -->
@@ -63,7 +65,7 @@
 							<img src="images/shopping-bag.svg" alt="">
 							<div class="cart_num_container">
 								<div class="cart_num_inner">
-									<div class="cart_num">4</div>
+									<div class="cart_num"><?php echo $result2 ?></div>
 								</div>
 							</div>
 						</div>
@@ -79,16 +81,17 @@
 		<div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
 		<div class="logo menu_mm"><a href="index.php">NEIGHBOR HOOD</a></div>
 		<div class="search">
-			<form action="UserAction.php">
+			<!-- <form action="UserAction.php">
 				<input type="search" class="search_input menu_mm" required="required">
 				<button type="submit" id="search_button_menu" class="search_button menu_mm"><img class="menu_mm" src="images/magnifying-glass.svg" alt=""></button>
-			</form>
+			</form> -->
 		</div>
 		<nav class="menu_nav">
 			<ul class="menu_mm">
 				<li class="menu_mm"><a href="index.php">home</a></li>
-				<li class="menu_mm"><a href="categoryies.php">items</a></li>
+				<li class="menu_mm"><a href="categories.php">items</a></li>
 				<li class="menu_mm"><a href="contact.php">contact</a></li>
+				<li class="menu_mm"><a href="user.php">my page</a></li>
 				<li class="menu_mm"><a href="logout.php">logout</a></li>
 			</ul>
 		</nav>
@@ -119,22 +122,23 @@
 					<?php } ?>
 					</div>
 				</div>
-	<!-- Footer -->
+<!-- Footer -->
 
-	<footer class="footer">
+<footer class="footer bg-dark" style="margin-top: 70px;">
 		<div class="container">
 			<div class="row">
 				<div class="col text-center">
-					<div class="footer_logo"><a href="index.php">NEIGHBOR HOOD</a></div>
+					<div class="footer_logo"><a href="index.php" class="text-white" style="font-size:40px;">NEIGHBOR HOOD</a></div>
 					<nav class="footer_nav">
 						<ul>
-							<li><a href="index.php">home</a></li>
-							<li><a href="categories.php">items</a></li>
-							<li><a href="contact.php">contact</a></li>
-							<li><a href="logout.php">logout</a></li>
+							<li><a href="index.php" class="text-white">home</a></li>
+							<li><a href="categories.php" class="text-white">items</a></li>
+                            <li><a href="contact.php" class="text-white">contact</a></li>
+							<li><a href="user.php" class="text-white">my page</a></li>
+                            <li><a href="logout.php" class="text-white">logout</a></li>
 						</ul>
 					</nav>
-					<div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					<div class="copyright text-white"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 Copyright &copy;<script>document.write(new Date().getFullYear());</script>NEIGHBOR　HOOD CO. LTD, ALL RIGHTS RESERVED <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
 				</div>
 			</div>

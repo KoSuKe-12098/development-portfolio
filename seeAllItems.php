@@ -8,7 +8,7 @@ session_start();
     $result = $items->getCategory();
     $result2 = $items->getContact();
     $result4 = $items->getItemInfo();
-    $result5 = $items->getDeliveryPersonInfo();
+    // $result5 = $items->getDeliveryPersonInfo();
 
 ?>
 
