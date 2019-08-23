@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)http://localhost:8888/Portfolio/admin.php -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin</title>
+    <link rel="stylesheet" href="./Admin_files/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="container-fluid">
+    <h1 class="text-center">ADMIN PAGE</h1>
+    <div class="row">
+        <div class="col-6">
+             <div class="card">
+                <!-- アイテムを追加するときのフォーム -->
+                <h2>Add Items</h2>
+                <form action="http://localhost:8888/Portfolio/AdminAction.php" method="post" enctype="multipart/form-data" 　class="txet-center">
+                Item Name
+                    <input type="text" name="name" placeholder="Item Name"><br><br>
+                Item Price
+                    <input type="number" name="price" placeholder="Item Price"><br><br>
+                Item Stock
+                    <input type="number" name="stock" placeholder="Item Stock"><br><br>
+                Item Color
+                    <input type="color" name="color" placeholder="Item Color"><br><br>
+                Item Size
+                    <select name="size">
+                    <option value="1">S</option><option value="2">M</option><option value="3">L</option><option value="5">LL</option>                    </select><br><br>
+                Item Comment
+                    <input type="text" name="com" placeholder="Item Comment"><br><br>
+                Serial Number
+                    <input type="text" name="serialnum" placeholder="Serial Number"><br><br>
+                Item Image
+                    <input type="file" name="image"><br><br>
+                Item Category
+                    <select name="catname">
+                    <option value="1">BOTTOMS</option><option value="2">SHIRTS</option><option value="3">JACKETS</option><option value="5">HAT &amp; CAP</option>                    </select><br><br>
+                    <input type="hidden" name="catid" value="5">
+                    <input type="submit" name="add" value="Add" class="btn-danger"><br><br>
+                </form>
+            </div>
+        </div>
+        <div class="col-6">
+             <div class="card">
+                 <!-- カテゴリを追加 -->
+                 <h2>Add Category &amp; Size</h2>
+                <form action="http://localhost:8888/Portfolio/AdminAction.php" method="post">
+                    <input type="text" name="catname" placeholder="Category Name"><br><br>
+                    <input type="text" name="size" placeholder="Size"><br><br>
+                    <input type="submit" name="addcat" value="Add Category" class="btn-success">
+                </form><br>
+                <!-- カテゴリの変更 -->
+                <h2>Update Category</h2>
+                    BOTTOMS<br><a href="http://localhost:8888/Portfolio/updateCategory.php?id=1">&gt;&gt;Update</a><a href="http://localhost:8888/Portfolio/AdminAction.php?actiontype=deletecat&amp;id=1">&gt;&gt;Delete</a><br>SHIRTS<br><a href="http://localhost:8888/Portfolio/updateCategory.php?id=2">&gt;&gt;Update</a><a href="http://localhost:8888/Portfolio/AdminAction.php?actiontype=deletecat&amp;id=2">&gt;&gt;Delete</a><br>JACKETS<br><a href="http://localhost:8888/Portfolio/updateCategory.php?id=3">&gt;&gt;Update</a><a href="http://localhost:8888/Portfolio/AdminAction.php?actiontype=deletecat&amp;id=3">&gt;&gt;Delete</a><br>HAT &amp; CAP<br><a href="http://localhost:8888/Portfolio/updateCategory.php?id=5">&gt;&gt;Update</a><a href="http://localhost:8888/Portfolio/AdminAction.php?actiontype=deletecat&amp;id=5">&gt;&gt;Delete</a><br>                    <br><br>
+            </div>
+        </div>    
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+            <!-- 客からのコメントを表示する機能 -->
+            <form action="http://localhost:8888/Portfolio/AdminAction.php" method="post">
+                <select name="comment">
+                   <option value="2">test</option><option value="3">test2</option>                </select>
+                <input type="submit" name="showcomment" value="Show Comment">   
+                    
+                
+                    </form>
+                    Name  test<br><br>Email  test@test<br><br>Subject  test<br><br>Comment  aaaaaaaaaaa<br><br>            </div>
+        </div>
+        <div class="col-6">
+            <div class="card">
+               <h2>Delivery Person </h2>
+               <a href="http://localhost:8888/Portfolio/DeliveryPersonRegistration.php">Registration</a><br><br>
+               Kosuke Inoue<br>aaa@aaa<br>11111111111<br><a href="http://localhost:8888/Portfolio/updateDeliveryPerson.php?id=2">&gt;&gt;Update</a>
+                              <a href="http://localhost:8888/Portfolio/AdminAction.php?actiontype=deletedeli&amp;id=2">&gt;&gt;Delete</a><br>            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <!-- アイテムの修正 -->
+                        <table class="w-100 text-center">
+                            <tbody><tr>    
+                                <th class="bg-dark text-white"> ID</th>
+                                <th class="bg-dark text-white"> Name</th>
+                                <th class="bg-dark text-white"> Price</th>
+                                <th class="bg-dark text-white"> Stock</th>
+                                <th class="bg-dark text-white"> Color</th>
+                                <th class="bg-dark text-white"> Size</th>
+                                <th class="bg-dark text-white"> Comment</th>
+                                <th class="bg-dark text-white"> Serial Number</th>
+                                <th class="bg-dark text-white"> Image</th>
+                                <th class="bg-dark text-white"></th>
+                            </tr>
+                            <tr>
+                                            <td>1</td>
+                                            <td>QB / CR-ST</td>
+                                            <td>25920</td>
+                                            <td>10</td>
+                                            <td>Tundora</td>
+                                            <td>1</td>
+                                            <td>バイカラーに切り替えたコットン/レーヨン混紡のショートパンツ。フロントにはカレッジロゴとナンバリングをプリント。バックはパッチポケットとロジックロゴが並ぶ。</td>
+                                            <td>1</td>
+                                            <td><img src="./Admin_files/191OKNH-PTM01_blue.jpg" 　class="w-50"></td>
+                                            <td><a href="http://localhost:8888/Portfolio/updateItem.php?id=1">&gt;&gt;Update</a></td><td>
+                                            </td><td><a href="http://localhost:8888/Portfolio/AdminAction.php?actiontype=delete&amp;id=2">&gt;&gt;Delete</a></td><td>
+                                        </td></tr><tr>
+                                            <td>2</td>
+                                            <td>QB / CR-ST</td>
+                                            <td>25920</td>
+                                            <td>10</td>
+                                            <td>Azure Radiance</td>
+                                            <td>1</td>
+                                            <td>バイカラーに切り替えたコットン/レーヨン混紡のショートパンツ。フロントにはカレッジロゴとナンバリングをプリント。バックはパッチポケットとロジックロゴが並ぶ。</td>
+                                            <td>1</td>
+                                            <td><img src="./Admin_files/191TSNH-SHM06_wh-thumb-350xauto-11186.jpg" 　class="w-50"></td>
+                                            <td><a href="http://localhost:8888/Portfolio/updateItem.php?id=2">&gt;&gt;Update</a></td><td>
+                                            </td><td><a href="http://localhost:8888/Portfolio/AdminAction.php?actiontype=delete&amp;id=2">&gt;&gt;Delete</a></td><td>
+                                        </td></tr><tr>
+                                            <td>4</td>
+                                            <td>kosuke</td>
+                                            <td>23</td>
+                                            <td>10</td>
+                                            <td>Black</td>
+                                            <td>1</td>
+                                            <td>1991</td>
+                                            <td>1</td>
+                                            <td><img src="./Admin_files/191MSNH-FW01_blk.jpg" 　class="w-50"></td>
+                                            <td><a href="http://localhost:8888/Portfolio/updateItem.php?id=4">&gt;&gt;Update</a></td><td>
+                                            </td><td><a href="http://localhost:8888/Portfolio/AdminAction.php?actiontype=delete&amp;id=2">&gt;&gt;Delete</a></td><td>
+                                        </td></tr>                            
+                        </tbody></table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body></html>
