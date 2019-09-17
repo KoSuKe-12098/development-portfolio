@@ -1,6 +1,5 @@
 <?php
 	require_once "classes/classUser.php";
-	session_start();
 	$id = $_SESSION["loginid"];
 	$user = new user;
 	$result = $user->specificSearchUser($id);
@@ -36,8 +35,9 @@
 					echo "Phone Number :".$row["phonenum"]."<br>";
 					echo "Username :".$row["username"]."<br>";
 					echo "Password :".$row["password"]."<br>";
-					echo "<a href='updateUser.php?id=$id'>>>Update";
+					echo "<a href='updateUser.php?id=$id'>>>Update<br>";
 				}
+					echo "<a href='user.php?id=$id'>>>Back"
 			?>
 	
 </div>

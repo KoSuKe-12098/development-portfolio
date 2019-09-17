@@ -1,14 +1,13 @@
 <?php
-session_start();
+
     require_once "classes/classItems.php";
     include "color.php";
 
     $items = new items;
     $color1 = new ColorInterpreter;
     $result = $items->getCategory();
-    $result2 = $items->getContact();
     $result4 = $items->getItemInfo();
-    $result5 = $items->getDeliveryPersonInfo();
+
 
 ?>
 
@@ -24,7 +23,7 @@ session_start();
 <body>
 <div class="container-fluid">
     <h1 class="text-center">ADMIN PAGE</h1><a href="logout.php">Logout</a><br><br>
-    <a href="seeAllItems.php">ALL ITEMS</A>
+    <a href="seeAllItems.php">ALL ITEMS</a><br><br><a href="showComment.php">ALL COMMENT</a>
     <div class="row">
         <div class="col-6">
              <div class="card">
@@ -43,7 +42,7 @@ session_start();
                     <select name="size">
                     <?php  
                         foreach($result as $row){
-                                    $catid = $row["catid"];
+                                    
                                     echo "<option value='".$row["size"]."'>".$row["size"]."</option>";
                                 }
                     ?>
@@ -101,62 +100,7 @@ session_start();
             </div>
         </div>    
     </div>
-    <div class="row">
-        <div class="col-6">
-            <div class="card">
-            <!-- 客からのコメントを表示する機能 -->
-            <form action="AdminAction.php" method="post">
-                <select name="comment">
-                   <?php 
-                    
-                    foreach($result2 as $row){
-                        echo "<option value='".$row["formid"]."'>".$row["name"]."</option>";
-                    }
-                  ?>
-                </select>
-                <input type='submit' name='showcomment' value='Show Comment'>   
-                    
-                
-                    </form>
-                    <?php if(isset($_SESSION["searchID"]) && !empty($_SESSION["searchID"])){
-
-                            $id = $_SESSION["searchID"];
-                            $result3 = $items->specificSearchComment($id);
-
-                            
-        
-                                echo "Name  ".$result3["name"]."<br><br>";
-                                echo "Email  ".$result3["email"]."<br><br>";
-                                echo "Subject  ".$result3["subject"]."<br><br>";
-                                echo "Comment  ".$result3["comment"]."<br><br>";
-                      
-                    }
-                             
-                ?>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="card">
-            <!-- デリバリー関係の機能 -->
-               <h2>Delivery Person </h2>
-               <a href="DeliveryPersonRegistration.php">Registration</a><br><br>
-               <?php  
-
-                    foreach($result5 as $row5){
-                        
-                        $deliid = $row5["deliid"];
-
-                        echo $row5["deliname"]."<br>";
-                        echo $row5["deliemail"]."<br>";
-                        echo $row5["deliphonenum"]."<br>";
-                        echo "<a href='updateDeliveryPerson.php?id=$deliid'>>>Update</a>
-                              <a href='AdminAction.php?actiontype=deletedeli&id=$deliid'>>>Delete</a><br>";
-
-                    }
-                ?>
-            </div>
-        </div>
-    </div>
+    
    
         </div>
     </div>

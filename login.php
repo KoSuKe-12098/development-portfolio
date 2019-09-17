@@ -24,32 +24,37 @@
         <input type="submit" name="login" value="Login" class="btn btn-primary w-50"><br><br>
         </form>
     </div>
-    <!-- footer -->
-    <footer class="footer">
+<!-- Footer -->
+
+<footer class="footer bg-dark" style="margin-top: 70px;">
 		<div class="container">
 			<div class="row">
 				<div class="col text-center">
-					<div class="footer_logo"><a href="#">NEIGHBOR HOOD</a></div>
+					<div class="footer_logo"><a href="" class="text-white" style="font-size:40px;">NEIGHBOR HOOD</a></div>
 					<nav class="footer_nav">
-						<ul>
-							<!-- <li><a href="index.html">home</a></li>
-							<li><a href="categories.html">items</a></li>
-							<li><a href="contact.html">contact</a></li>
-							<li><a href="logout.php">logout</a></li> -->
-						</ul>
+						<!-- <ul>
+							<li><a href="index.php" class="text-white">home</a></li>
+							<li><a href="categories.php" class="text-white">items</a></li>
+                            <li><a href="contact.php" class="text-white">contact</a></li>
+							<li><a href="user.php" class="text-white">my page</a></li>
+                            <li><a href="logout.php" class="text-white">logout</a></li>
+						</ul> -->
 					</nav>
-					<div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					<div class="copyright text-white"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 Copyright &copy;<script>document.write(new Date().getFullYear());</script>NEIGHBOR　HOOD CO. LTD, ALL RIGHTS RESERVED <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
 				</div>
 			</div>
 		</div>
 	</footer>
 </div>
+
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="styles/bootstrap4/popper.js"></script>
 <script src="styles/bootstrap4/bootstrap.min.js"></script>
+<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
 <script src="plugins/easing/easing.js"></script>
 <script src="plugins/parallax-js-master/parallax.min.js"></script>
-<script src="js/cart_custom.js"></script>
+<script src="plugins/colorbox/jquery.colorbox-min.js"></script>
+<script src="js/custom.js"></script>
 </body>
 </html>

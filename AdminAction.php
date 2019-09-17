@@ -31,10 +31,9 @@
     }else if(isset($_POST["showcomment"])){
 
         $formid = $_POST["comment"];
-    
         $_SESSION["searchID"] = $formid;
 
-        header("Location: admin.php");
+        header("Location: showComment.php");
        
     }else if(isset($_POST["update"])){
 

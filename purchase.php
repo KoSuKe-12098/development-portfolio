@@ -1,5 +1,5 @@
 <?php
-    session_start();
+
 	require_once "classes/classUser.php";
     include "classes/classItems.php";
 
@@ -43,14 +43,13 @@
 <form action="UserAction.php" method="post">
                 <select name="date">
                    <?php 
-                   // 未完成
                     
                     foreach($result as $row){
                         echo "<option value='".$row["purchaseDate"]."'>".$row["purchaseDate"]."</option>";
                     }
                   ?>
                 </select>
-                <input type='submit' name='showpurchase' value='Show purchase'>   
+                <input type='submit' name='showpurchase' value='Show purchase'><br><br>
                     
                 
                     </form>
@@ -66,10 +65,10 @@
                                 echo "item Name :".$row2["purchaseitemname"]."<br>";
                                 echo "item Price :".$row2["purchasePrice"]."<br>";
                                 echo "item Quantity :".$row2["purchaseitemquantity"]."<br>";
-                                echo "Purchase Date :".$row2["purchaseDate"]."<br>";
+                                echo "Purchase Date :".$row2["purchaseDate"]."<br><br>";
                             }
 
-                            echo "<a href='user.php?id=$id'>>>Go to User";
+                            echo "<a href='user.php?id=$id'>>>Back";
                       
                     }
                              

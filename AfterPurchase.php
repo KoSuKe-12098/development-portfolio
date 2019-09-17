@@ -1,14 +1,14 @@
 <?php
-	
+
 	require_once "classes/classUser.php";
 	include "classes/classItems.php";
 
 	$loginid = $_SESSION["loginid"];
+
 	$items = new items;
 	$user = new user;
-	$result = $user->specificSearchUser($id);
-	$result2 = $items->getCartQuantity($loginid);
-
+	
+	$result = $items->getCartQuantity($loginid);
 
 ?>
 <!DOCTYPE html>
@@ -29,7 +29,7 @@
 <link rel="stylesheet" type="text/css" href="styles/responsive.css">
 <script src="https://kit.fontawesome.com/fd43627e85.js"></script>
 </head>
-<body>
+<body style="margin-top:155px;">
 
 <div class="super_container">
 	
@@ -61,7 +61,7 @@
 							<img src="images/shopping-bag.svg" alt="">
 							<div class="cart_num_container">
 								<div class="cart_num_inner">
-									<div class="cart_num"><?php echo $result2 ?></div>
+									<div class="cart_num"><?php echo $result ?></div>
 								</div>
 							</div>
 						</div>
@@ -94,35 +94,9 @@
 		</nav>
     </div>
     <!-- Home -->
-	<div class="row" style="margin-top: 150px;">
-		<div class="col-4">
-			<div class="card">
-				<h1><a href="ShowUserInfo.php">User Info</a></h1>
-			</div>
-		</div>
-		<div class="col-4">
-			<div class="card">
-				<h1><a href="categories.php">Category</a></h1>
-			</div>
-		</div>
-		<div class="col-4">
-			<div class="card">
-				<h1><a href="cart.php">Cart</a></h1>
-			</div>
-		</div>
-	</div>
-	<div class="row" style="margin-top: 150px;">
-		<div class="col-4">
-			<div class="card">
-				<h1><a href="purchase.php">Purchase</a></h1>
-			</div>
-		</div>
-	</div>
-	
 
 
-
-
+<h1 style="text-align: center;">ご購入ありがとうございます</h1>
 
 
 

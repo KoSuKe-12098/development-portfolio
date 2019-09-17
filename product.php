@@ -1,11 +1,12 @@
 <?php
-session_start();
+
 		require_once "classes/classItems.php";
+		include "classes/classUser.php";
 		$id = $_GET["id"];
 		$items = new items;
 		$loginid = $_SESSION["loginid"];
 		$result = $items->specificSearchItem($id);
-		// $result2 = getCartQuantity($loginid);
+		$result2 = $items->getCartQuantity($loginid);
 	
 ?>
 
@@ -38,15 +39,16 @@ session_start();
 					<li><a href="index.php">home</a></li>
 					<li><a href="categories.php">items</a></li>
 					<li><a href="contact.php">contact</a></li>
+					<li><a href="user.php">my page</a></li>
 					<li><a href="logout.php">logout</a></li>
 				</ul>
 			</nav>
 			<div class="header_content ml-auto">
 				<div class="search header_search">
-					<form action="index.php">
+					<!-- <form action="index.php">
 						<input type="search" class="search_input" required="required">
 						<button type="submit" id="search_button" class="search_button"><img src="images/magnifying-glass.svg" alt=""></button>
-					</form>
+					</form> -->
 				</div>
 				<div class="shopping">
 					<!-- Cart -->
@@ -71,16 +73,17 @@ session_start();
 		<div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
 		<div class="logo menu_mm"><a href="index.php">NEIGHBOR HOOD</a></div>
 		<div class="search">
-			<form action="#">
+			<!-- <form action="#">
 				<input type="search" class="search_input menu_mm" required="required">
 				<button type="submit" id="search_button_menu" class="search_button menu_mm"><img class="menu_mm" src="images/magnifying-glass.svg" alt=""></button>
-			</form>
+			</form> -->
 		</div>
 		<nav class="menu_nav">
 			<ul class="menu_mm">
 				<li class="menu_mm"><a href="index.php">home</a></li>
-				<li class="menu_mm"><a href="categoryies.php">items</a></li>
+				<li class="menu_mm"><a href="categories.php">items</a></li>
 				<li class="menu_mm"><a href="cantact.php">contact</a></li>
+				<li class="menu_mm"><a href="user.php">my page</a></li>
 				<li class="menu_mm"><a href="logout.php">logout</a></li>
 			</ul>
 		</nav>
@@ -155,7 +158,10 @@ session_start();
 						<!-- In Stock -->
 						<div class="in_stock_container">
 							<div class="in_stock in_stock_true"></div>
-							<span><?php echo $row["itemstock"]?></span>
+							<span><?php if($row["itemstock"] >= 0){
+								 echo $row["itemstock"];
+							}else{ echo "SOLD OUT";
+							}?></span>
 						</div>
 						<div class="product_text">
 							<p><?php echo $row["itemcomment"]?></p>
@@ -187,22 +193,23 @@ session_start();
 
 			
 
-	<!-- Footer -->
+<!-- Footer -->
 
-	<footer class="footer">
+<footer class="footer bg-dark" style="margin-top: 70px;">
 		<div class="container">
 			<div class="row">
 				<div class="col text-center">
-					<div class="footer_logo"><a href="index.php">NEIGHBOR HOOD</a></div>
+					<div class="footer_logo"><a href="index.php" class="text-white" style="font-size:40px;">NEIGHBOR HOOD</a></div>
 					<nav class="footer_nav">
 						<ul>
-							<li><a href="index.php">home</a></li>
-							<li><a href="categories.php">items</a></li>
-							<li><a href="contact.php">contact</a></li>
-							<li><a href="logout.php">logout</a></li>
+							<li><a href="index.php" class="text-white">home</a></li>
+							<li><a href="categories.php" class="text-white">items</a></li>
+                            <li><a href="contact.php" class="text-white">contact</a></li>
+							<li><a href="user.php" class="text-white">my page</a></li>
+                            <li><a href="logout.php" class="text-white">logout</a></li>
 						</ul>
 					</nav>
-					<div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					<div class="copyright text-white"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 Copyright &copy;<script>document.write(new Date().getFullYear());</script>NEIGHBOR　HOOD CO. LTD, ALL RIGHTS RESERVED <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
 				</div>
 			</div>
@@ -213,8 +220,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script>NEIGHB
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="styles/bootstrap4/popper.js"></script>
 <script src="styles/bootstrap4/bootstrap.min.js"></script>
+<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
 <script src="plugins/easing/easing.js"></script>
 <script src="plugins/parallax-js-master/parallax.min.js"></script>
-<script src="js/product_custom.js"></script>
+<script src="plugins/colorbox/jquery.colorbox-min.js"></script>
+<script src="js/custom.js"></script>
 </body>
 </html>
